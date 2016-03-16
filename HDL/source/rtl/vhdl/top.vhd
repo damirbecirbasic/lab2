@@ -52,8 +52,8 @@ architecture rtl of top is
   constant MEM_ADDR_WIDTH : natural := MEM_ADDR_WIDTH_ARRAY(RES_TYPE);
   constant MEM_SIZE       : natural := MEM_SIZE_ARRAY(RES_TYPE);
 
-  component vga_top is 
-    generic (
+  component vga_top is
+  generic (
       H_RES                : natural := 640;
       V_RES                : natural := 480;
       MEM_ADDR_WIDTH       : natural := 32;
@@ -250,6 +250,11 @@ begin
   --dir_red
   --dir_green
   --dir_blue
+  
+	dir_red<=x"ff" when (dir_pixel_column >=H_RES/8*4 and dir_pixel_column<H_RES/8*6 ) or (dir_pixel_column<H_RES/8*2) else x"00";
+   dir_blue<=x"ff" when (dir_pixel_column<H_RES/8*1 ) or (dir_pixel_column>=H_RES/8*2 and dir_pixel_column<H_RES/8*3 ) or (dir_pixel_column>=H_RES/8*4 and dir_pixel_column<H_RES/8*5 ) or (dir_pixel_column>=H_RES/8*6 and dir_pixel_column<H_RES/8*7 ) else x"00";
+   dir_green<=x"ff" when (dir_pixel_column<H_RES/8*4) else x"00";
+  
  
   -- koristeci signale realizovati logiku koja pise po TXT_MEM
   --char_address
