@@ -292,7 +292,7 @@ begin
 		(others => '0') when 1199 = char_address else char_address + 1;
 		
 	next_pixel_address <= 
-		(others => '0') when 1199 = pixel_address else pixel_address + 1;
+		(others => '0') when 9599 = pixel_address else pixel_address + 1;
 	
   
   -- na osnovu signala iz vga_top modula dir_pixel_column i dir_pixel_row realizovati logiku koja genereise
@@ -326,8 +326,47 @@ begin
   --pixel_we
   
    pixel_we <= '1';
-   pixel_value <= x"FFFFFFFF" when (conv_integer(pixel_address) mod 20 = 0 and pixel_address<=720) else
-				    	x"00000000";
+--   pixel_value <= x"FFFFFFFF" when (conv_integer(pixel_address) mod 10 = 0 and pixel_address>=4410 and pixel_address<=5130 and ((conv_integer(pixel_address) mod 100) rem 10) mod 2 =1) else
+--				    	x"00000000";
+  
+  pixel_value <= x"FFFFFFFF" when pixel_address = 4410 else
+					  x"FFFFFFFF" when pixel_address = 4430 else
+					  x"FFFFFFFF" when pixel_address = 4450 else
+					  x"FFFFFFFF" when pixel_address = 4470 else
+					  x"FFFFFFFF" when pixel_address = 4490 else
+					  x"FFFFFFFF" when pixel_address = 4510 else
+					  x"FFFFFFFF" when pixel_address = 4530 else
+					  x"FFFFFFFF" when pixel_address = 4550 else
+					  x"FFFFFFFF" when pixel_address = 4570 else
+					  x"FFFFFFFF" when pixel_address = 4590 else
+					  x"FFFFFFFF" when pixel_address = 4610 else
+					  x"FFFFFFFF" when pixel_address = 4630 else
+					  x"FFFFFFFF" when pixel_address = 4650 else
+					  x"FFFFFFFF" when pixel_address = 4670 else
+					  x"FFFFFFFF" when pixel_address = 4690 else
+					  x"FFFFFFFF" when pixel_address = 4710 else
+					  x"FFFFFFFF" when pixel_address = 4730 else
+					  x"FFFFFFFF" when pixel_address = 4750 else
+					  x"FFFFFFFF" when pixel_address = 4770 else
+					  x"FFFFFFFF" when pixel_address = 4790 else
+					  x"FFFFFFFF" when pixel_address = 4810 else
+					  x"FFFFFFFF" when pixel_address = 4830 else
+					  x"FFFFFFFF" when pixel_address = 4850 else
+					  x"FFFFFFFF" when pixel_address = 4870 else
+					  x"FFFFFFFF" when pixel_address = 4890 else
+					  x"FFFFFFFF" when pixel_address = 4910 else
+					  x"FFFFFFFF" when pixel_address = 4930 else
+					  x"FFFFFFFF" when pixel_address = 4950 else
+					  x"FFFFFFFF" when pixel_address = 4970 else
+					  x"FFFFFFFF" when pixel_address = 4990 else
+					  x"FFFFFFFF" when pixel_address = 5010 else
+					  x"FFFFFFFF" when pixel_address = 5030 else
+					  x"FFFFFFFF" when pixel_address = 5050 else
+					  x"FFFFFFFF" when pixel_address = 5070 else
+					  x"FFFFFFFF" when pixel_address = 5090 else
+					  x"FFFFFFFF" when pixel_address = 5110 else
+					  x"FFFFFFFF" when pixel_address = 5130 else
+					  x"00000000";
   
   
 end rtl;
